@@ -104,17 +104,8 @@
     "profile": {
         "path": "/usr/lib/python3.9/site-packages/archinstall-2.3.0.dev0-py3.9.egg/archinstall/profiles/minimal.py"
     },
+    "!root-password": "test",
     "script": "guided",
-    "superusers": {
-        "angerstoner": {
-            "!password": "test"
-        }
-    },
-    "users": {
-        "angerstoner": {
-            "!password": "test"
-        }
-    },
     "swap": true,
     "sys-encoding": "utf-8",
     "sys-language": "en_US",
