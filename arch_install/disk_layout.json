@@ -1,41 +1,41 @@
 {
-  "/dev/sda": {
-    "partitions": [
-      {
-        "boot": true,
-        "encrypted": false,
-        "filesystem": {
-          "format": "fat32"
-        },
-        "format": true,
-        "mountpoint": "/boot",
-        "size": "513MiB",
-        "start": "5MiB",
-        "type": "primary"
-      },
-      {
-        "encrypted": true,
-        "filesystem": {
-          "format": "ext4"
-        },
-        "format": true,
-        "mountpoint": "/",
-        "size": "61440MiB",
-        "start": "518MiB",
-        "type": "primary"
-      },
-      {
-        "encrypted": true,
-        "filesystem": {
-          "format": "ext4"
-        },
-        "format": true,
-        "mountpoint": "/home",
-        "size": "100%",
-        "start": "61952MiB",
-        "type": "primary"
-      }
-    ],
-    "wipe": true
-  }
+    "/dev/sda": {
+        "partitions": [
+            {
+                "boot": true,
+                "encrypted": false,
+                "filesystem": {
+                    "format": "fat32"
+                },
+                "format": true,
+                "mountpoint": "/boot",
+                "size": "513MiB",
+                "start": "5MiB",
+                "type": "primary"
+            },
+            {
+                "encrypted": true,
+                "filesystem": {
+                    "format": "ext4"
+                },
+                "format": true,
+                "mountpoint": "/",
+                "size": "61440MiB",
+                "start": "518MiB",
+                "type": "primary"
+            },
+            {
+                "encrypted": true,
+                "filesystem": {
+                    "format": "ext4"
+                },
+                "format": true,
+                "mountpoint": "/home",
+                "size": "100%",
+                "start": "61952MiB",
+                "type": "primary"
+            }
+        ],
+        "wipe": true
+    }
 }
