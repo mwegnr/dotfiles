@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
 # install git and pip
-pacman -Syy git python-pip
+pacman -Sy --noconfirm git python-pip
 
 # download dotfiles & arch installer
 git clone https://github.com/angerstoner/dotfiles
@@ -17,4 +17,4 @@ python setup.py install
 cd examples
 cp ~/dotfiles/arch_install/* . 
 
-python guided.py --config /root/dotfiles/arch_install/config.json --silent --disk_layouts=/root/dotfiles/arch_install/disk_layout
+python guided.py --config /root/dotfiles/arch_install/config.json --silent --disk_layouts=/root/dotfiles/arch_install/disk_layout.json
