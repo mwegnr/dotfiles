@@ -1,0 +1,31 @@
+{
+    "audio": "pipewire",
+    "bootloader": "grub-install",
+    "!encryption-password": "test",
+    "filesystem": "ext4",
+    "gfx_driver": "All open-source (default)",
+    "harddrive": {
+        "path": "/dev/sda"
+    },
+    "hostname": "azazel",
+    "kernels": [
+        "linux"
+    ],
+    "keyboard-language": "us",
+    "mirror-region": "Germany",
+    "nic": {
+        "NetworkManager": true
+    },
+    "ntp": true,
+    "packages": ["docker", "git", "wget", "zsh"],
+    "profile": "sway",
+    "superusers": {
+        "angerstoner": {
+            "!password": "devel"
+        }
+    },
+    "sys-encoding": "utf-8",
+    "sys-language": "en_US",
+    "timezone": "Europe/Berlin",
+    "users": {}
+}
