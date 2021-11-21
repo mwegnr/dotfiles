@@ -1,5 +1,7 @@
 #!/usr/bin/env bash
 
+PASSWORD="test"
+
 # install git and pip
 pacman -Sy --noconfirm git python-pip
 
@@ -15,11 +17,10 @@ python setup.py install
 
 # launch archinstall with config
 cd examples
-cp ~/dotfiles/arch_install/* . 
+cp ~/dotfiles/arch_install/* .
 
 python guided.py --config /root/dotfiles/arch_install/config.json --silent --disk_layouts=/root/dotfiles/arch_install/disk_layout.json
 
 arch-chroot /mnt/archinstall
 useradd -m angerstoner
-echo -e "test" | passwd angerstoner
-echo -e "test" | passwd root
+echo -e "$PASSWORD\n$PASSWORD"  | passwd angerstoner
