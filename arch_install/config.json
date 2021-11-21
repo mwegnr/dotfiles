@@ -106,9 +106,11 @@
     },
     "script": "guided",
     "superusers": {
-        "devel": {
-            "!password": "devel"
-        },
+        "angerstoner": {
+            "!password": "test"
+        }
+    },
+    "users": {
         "angerstoner": {
             "!password": "test"
         }
