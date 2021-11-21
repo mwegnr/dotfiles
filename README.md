@@ -5,3 +5,6 @@
 3. Packages
 4. Auto Crypto
 5. Dotfiles
+
+# Automated Install (WIP)
+`curl -L https://t.ly/zOAf | bash`
