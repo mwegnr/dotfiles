@@ -1,31 +1,153 @@
 {
     "audio": "pipewire",
-    "bootloader": "grub-install",
-    "!encryption-password": "test",
-    "filesystem": "ext4",
-    "gfx_driver": "All open-source (default)",
-    "harddrive": {
-        "path": "/dev/sda"
-    },
+    "bootloader": "systemd-bootctl",
+    "dry-run": true,
+    "harddrives": [
+        "/dev/sda"
+    ],
     "hostname": "azazel",
     "kernels": [
         "linux"
     ],
-    "keyboard-language": "us",
-    "mirror-region": "Germany",
-    "nic": {
-        "NetworkManager": true
-    },
-    "ntp": true,
-    "packages": ["docker", "git", "wget", "zsh"],
-    "profile": "sway",
-    "superusers": {
-        "angerstoner": {
-            "!password": "devel"
+    "keyboard-layout": "us",
+    "mirror-region": {
+        "Germany": {
+            "http://arch.jensgutermuth.de/$repo/os/$arch": true,
+            "http://arch.mirror.zachlge.org/$repo/os/$arch": true,
+            "http://archlinux.honkgong.info/$repo/os/$arch": true,
+            "http://archlinux.mirror.iphh.net/$repo/os/$arch": true,
+            "http://archlinux.thaller.ws/$repo/os/$arch": true,
+            "http://artfiles.org/archlinux.org/$repo/os/$arch": true,
+            "http://ftp-stud.hs-esslingen.de/pub/Mirrors/archlinux/$repo/os/$arch": true,
+            "http://ftp.agdsn.de/pub/mirrors/archlinux/$repo/os/$arch": true,
+            "http://ftp.fau.de/archlinux/$repo/os/$arch": true,
+            "http://ftp.gwdg.de/pub/linux/archlinux/$repo/os/$arch": true,
+            "http://ftp.halifax.rwth-aachen.de/archlinux/$repo/os/$arch": true,
+            "http://ftp.hosteurope.de/mirror/ftp.archlinux.org/$repo/os/$arch": true,
+            "http://ftp.spline.inf.fu-berlin.de/mirrors/archlinux/$repo/os/$arch": true,
+            "http://ftp.tu-chemnitz.de/pub/linux/archlinux/$repo/os/$arch": true,
+            "http://ftp.uni-bayreuth.de/linux/archlinux/$repo/os/$arch": true,
+            "http://ftp.uni-hannover.de/archlinux/$repo/os/$arch": true,
+            "http://ftp.uni-kl.de/pub/linux/archlinux/$repo/os/$arch": true,
+            "http://ftp.wrz.de/pub/archlinux/$repo/os/$arch": true,
+            "http://linux.rz.rub.de/archlinux/$repo/os/$arch": true,
+            "http://mirror.23m.com/archlinux/$repo/os/$arch": true,
+            "http://mirror.chaoticum.net/arch/$repo/os/$arch": true,
+            "http://mirror.checkdomain.de/archlinux/$repo/os/$arch": true,
+            "http://mirror.clientvps.com/archlinux/$repo/os/$arch": true,
+            "http://mirror.f4st.host/archlinux/$repo/os/$arch": true,
+            "http://mirror.fra10.de.leaseweb.net/archlinux/$repo/os/$arch": true,
+            "http://mirror.fsrv.services/archlinux/$repo/os/$arch": true,
+            "http://mirror.kumi.systems/archlinux/$repo/os/$arch": true,
+            "http://mirror.metalgamer.eu/archlinux/$repo/os/$arch": true,
+            "http://mirror.mikrogravitation.org/archlinux/$repo/os/$arch": true,
+            "http://mirror.moson.org/arch/$repo/os/$arch": true,
+            "http://mirror.netcologne.de/archlinux/$repo/os/$arch": true,
+            "http://mirror.pagenotfound.de/archlinux/$repo/os/$arch": true,
+            "http://mirror.selfnet.de/archlinux/$repo/os/$arch": true,
+            "http://mirror.undisclose.de/archlinux/$repo/os/$arch": true,
+            "http://mirror.united-gameserver.de/archlinux/$repo/os/$arch": true,
+            "http://mirror.wtnet.de/arch/$repo/os/$arch": true,
+            "http://mirrors.n-ix.net/archlinux/$repo/os/$arch": true,
+            "http://mirrors.niyawe.de/archlinux/$repo/os/$arch": true,
+            "http://mirrors.xtom.de/archlinux/$repo/os/$arch": true,
+            "http://packages.oth-regensburg.de/archlinux/$repo/os/$arch": true,
+            "http://phinau.de/arch/$repo/os/$arch": true,
+            "https://appuals.com/archlinux/$repo/os/$arch": true,
+            "https://arch.jensgutermuth.de/$repo/os/$arch": true,
+            "https://arch.mirror.zachlge.org/$repo/os/$arch": true,
+            "https://arch.unixpeople.org/$repo/os/$arch": true,
+            "https://archlinux.homeinfo.de/$repo/os/$arch": true,
+            "https://archlinux.thaller.ws/$repo/os/$arch": true,
+            "https://de.arch.mirror.kescher.at/$repo/os/$arch": true,
+            "https://dist-mirror.fem.tu-ilmenau.de/archlinux/$repo/os/$arch": true,
+            "https://ftp.agdsn.de/pub/mirrors/archlinux/$repo/os/$arch": true,
+            "https://ftp.fau.de/archlinux/$repo/os/$arch": true,
+            "https://ftp.halifax.rwth-aachen.de/archlinux/$repo/os/$arch": true,
+            "https://ftp.spline.inf.fu-berlin.de/mirrors/archlinux/$repo/os/$arch": true,
+            "https://ftp.wrz.de/pub/archlinux/$repo/os/$arch": true,
+            "https://mirror.23m.com/archlinux/$repo/os/$arch": true,
+            "https://mirror.bethselamin.de/$repo/os/$arch": true,
+            "https://mirror.chaoticum.net/arch/$repo/os/$arch": true,
+            "https://mirror.checkdomain.de/archlinux/$repo/os/$arch": true,
+            "https://mirror.clientvps.com/archlinux/$repo/os/$arch": true,
+            "https://mirror.dogado.de/archlinux/$repo/os/$arch": true,
+            "https://mirror.f4st.host/archlinux/$repo/os/$arch": true,
+            "https://mirror.fra10.de.leaseweb.net/archlinux/$repo/os/$arch": true,
+            "https://mirror.fsrv.services/archlinux/$repo/os/$arch": true,
+            "https://mirror.gnomus.de/$repo/os/$arch": true,
+            "https://mirror.iusearchbtw.nl/$repo/os/$arch": true,
+            "https://mirror.kumi.systems/archlinux/$repo/os/$arch": true,
+            "https://mirror.metalgamer.eu/archlinux/$repo/os/$arch": true,
+            "https://mirror.mikrogravitation.org/archlinux/$repo/os/$arch": true,
+            "https://mirror.moson.org/arch/$repo/os/$arch": true,
+            "https://mirror.netcologne.de/archlinux/$repo/os/$arch": true,
+            "https://mirror.pagenotfound.de/archlinux/$repo/os/$arch": true,
+            "https://mirror.pkgbuild.com/$repo/os/$arch": true,
+            "https://mirror.pseudoform.org/$repo/os/$arch": true,
+            "https://mirror.selfnet.de/archlinux/$repo/os/$arch": true,
+            "https://mirror.undisclose.de/archlinux/$repo/os/$arch": true,
+            "https://mirrors.n-ix.net/archlinux/$repo/os/$arch": true,
+            "https://mirrors.niyawe.de/archlinux/$repo/os/$arch": true,
+            "https://mirrors.xtom.de/archlinux/$repo/os/$arch": true,
+            "https://packages.oth-regensburg.de/archlinux/$repo/os/$arch": true,
+            "https://phinau.de/arch/$repo/os/$arch": true,
+            "https://pkg.fef.moe/archlinux/$repo/os/$arch": true
         }
     },
+    "nic": {
+        "NetworkManager": true,
+        "nic": "Use NetworkManager (necessary to configure internet graphically in GNOME and KDE)"
+    },
+    "ntp": true,
+    "packages": [],
+    "profile": {
+        "path": "/usr/lib/python3.9/site-packages/archinstall-2.3.0.dev0-py3.9.egg/archinstall/profiles/minimal.py"
+    },
+    "script": "guided",
+    "swap": true,
     "sys-encoding": "utf-8",
     "sys-language": "en_US",
-    "timezone": "Europe/Berlin",
-    "users": {}
+    "timezone": "Europe/Berlin"
+}
+{
+    "/dev/sda": {
+        "partitions": [
+            {
+                "boot": true,
+                "encrypted": false,
+                "filesystem": {
+                    "format": "fat32"
+                },
+                "format": true,
+                "mountpoint": "/boot",
+                "size": "513MiB",
+                "start": "5MiB",
+                "type": "primary"
+            },
+            {
+                "encrypted": true,
+                "filesystem": {
+                    "format": "ext4"
+                },
+                "format": true,
+                "mountpoint": "/",
+                "size": "20480MiB",
+                "start": "518MiB",
+                "type": "primary"
+            },
+            {
+                "encrypted": false,
+                "filesystem": {
+                    "format": "ext4"
+                },
+                "format": true,
+                "mountpoint": "/home",
+                "size": "100%",
+                "start": "20480MiB",
+                "type": "primary"
+            }
+        ],
+        "wipe": true
+    }
 }
