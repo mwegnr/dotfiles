@@ -106,12 +106,14 @@
     },
     "script": "guided",
     "superusers": {
-        "angerstoner": {
+        "devel": {
             "!password": "devel"
+        },
+        "angerstoner": {
+            "!password": "test"
         }
     },
     "swap": true,
-
     "sys-encoding": "utf-8",
     "sys-language": "en_US",
     "timezone": "Europe/Berlin"
