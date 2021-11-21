@@ -15,6 +15,7 @@
             },
             {
                 "encrypted": true,
+                "!password": "devel",
                 "filesystem": {
                     "format": "ext4"
                 },
