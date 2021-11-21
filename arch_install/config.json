@@ -1,6 +1,6 @@
 {
     "audio": "pipewire",
-    "bootloader": "systemd-bootctl",
+    "bootloader": "grub-install",
     "dry-run": true,
     "harddrives": [
         "/dev/sda"
