@@ -12,7 +12,7 @@ git clone https://github.com/archlinux/archinstall
 # replace installed archinstall by newer version
 pip uninstall archinstall -y
 cd archinstall
-git checkout v2.3.0.RC2
+git checkout v2.3.0
 python setup.py install
 
 # launch archinstall with config
