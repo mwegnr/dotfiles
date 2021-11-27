@@ -1,7 +1,6 @@
 {
     "audio": "pipewire",
     "bootloader": "grub-install",
-    "dry-run": true,
     "harddrives": [
         "/dev/sda"
     ],
@@ -101,9 +100,7 @@
     },
     "ntp": true,
     "packages": [],
-    "profile": {
-        "path": "/usr/lib/python3.9/site-packages/archinstall-2.3.0.dev0-py3.9.egg/archinstall/profiles/minimal.py"
-    },
+    "profile": "minimal",
     "script": "guided",
     "superusers": {
         "angerstoner": {
