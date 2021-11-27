@@ -27,11 +27,11 @@
             },
             {
                 "encrypted": true,
-                "!password": "devel",
                 "filesystem": {
                     "format": "ext4"
                 },
                 "format": true,
+                "generate-encryption-key-file": true,
                 "mountpoint": "/home",
                 "size": "100%",
                 "start": "61952MiB",
