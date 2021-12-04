@@ -1,7 +1,7 @@
 #!/usr/bin/env bash
 
-# install git and update archinstall to at least v2.3.0
-pacman -Sy --noconfirm git archinstall
+# install git and pip
+pacman -Sy --noconfirm git python-pip
 
 # download dotfiles & arch installer
 git clone https://github.com/angerstoner/dotfiles
