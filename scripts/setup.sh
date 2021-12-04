@@ -7,8 +7,16 @@ pacman -Sy --noconfirm git archinstall
 git clone https://github.com/angerstoner/dotfiles
 git clone https://github.com/archlinux/archinstall
 
+# replace installed archinstall by newer version
+pip uninstall archinstall -y
+cd archinstall
+python setup.py install
+
 # launch archinstall with config
-archinstall --config /root/dotfiles/arch_install/config.json --silent --disk_layouts=/root/dotfiles/arch_install/disk_layout.json
+cd examples
+cp ~/dotfiles/arch_install/* .
+python guided.py --config /root/dotfiles/arch_install/config.json --silent --disk_layouts=/root/dotfiles/arch_install/disk_layout.json
+
 
 arch-chroot /mnt/archinstall
 useradd -m angerstoner
