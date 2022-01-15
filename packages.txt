@@ -14,7 +14,7 @@ cifs-utils
 dcfldd
 dnsmasq
 discord
-docker 
+docker
 docker-compose
 efibootmgr
 eog

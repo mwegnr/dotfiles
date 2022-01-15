@@ -24,11 +24,12 @@ def install_packages():
 
 def link_config_files():
     for file in config_paths:
+        dir_path = os.path.split(os.path.dirname(__file__))[0]
         filepath = "{}/{}".format(
-            os.path.split(os.path.dirname(__file__))[0],  # parent dir/config file dir +
+            dir_path,  # parent dir/config file dir +
             file)  # filename
 
-        os.makedirs(filepath, exist_ok=True)
+        os.makedirs(dir_path, exist_ok=True)
         link_cmd = ["ln", "-sf", filepath, config_paths[file]]
         subprocess.run(link_cmd)
         print(link_cmd)
