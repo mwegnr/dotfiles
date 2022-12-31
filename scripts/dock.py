@@ -2,7 +2,6 @@
 import subprocess
 import json
 
-# TODO: change to dell home dock
 dock_identifier_home = "04d9:0296"  # Keyboard, because thunderbolt dock does not have a USB ID
 dock_identifier_work = "413c:b06e"  # Bus 005 Device 006: ID 413c:b06e Dell Computer Corp. Dell dock
 
@@ -25,7 +24,6 @@ class Screen:
 
 
 screen_identifiers_home = [
-    # Screen('Dell Inc.', 'Dell U4919DW', 'CQXTY2', 0),
     Screen('Acer Technologies', 'Acer K222HQL', 'T1LEE0054201', 0),
     Screen('Goldstar Company Ltd', '24MB56', '', 1920),
     Screen('Goldstar Company Ltd', '24MB56', '508NTDVBJ122', 3840),

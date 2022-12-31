@@ -12,7 +12,7 @@ config_paths = {
     f"{CONFIGS_PATH}/gtk3.0.config": f"{USER_HOME}/.config/gtk-3.0/settings.ini",
     f"{CONFIGS_PATH}/import-gsettings": f"{USER_HOME}/.config/gtk-3.0/import-gsettings",
     f"{CONFIGS_PATH}/sway.config": f"{USER_HOME}/.config/sway/config",
-    f"{CONFIGS_PATH}/termite.config": f"{USER_HOME}/.config/termite/config",
+    f"{CONFIGS_PATH}/mako.config": f"{USER_HOME}/.config/mako/config",
     f"{CONFIGS_PATH}/waybar.config": f"{USER_HOME}/.config/waybar/config",
     f"{CONFIGS_PATH}/waybar.style": f"{USER_HOME}/.config/waybar/style.css",
     f"{CONFIGS_PATH}/zsh.config": f"{USER_HOME}/.zshrc",
