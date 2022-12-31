@@ -1,8 +1,10 @@
 #!/usr/bin/python3
 import subprocess
 import os.path
+import os
 
-USER_HOME = "/home/angerstoner"
+
+USER_HOME = f"/home/{os.getlogin()}"
 CONFIGS_PATH = "configs"
 
 config_paths = {
@@ -32,7 +34,7 @@ def link_config_files():
 
         os.makedirs(link_dir, exist_ok=True)
         link_cmd = ["ln", "-sf", filepath, config_paths[file]]
-        subprocess.run(link_cmd)
+        # subprocess.run(link_cmd)
         print(link_cmd)
 
 
