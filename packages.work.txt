@@ -11,6 +11,7 @@ bluez
 bluez-utils
 cheese
 cifs-utils
+cups
 dcfldd
 dnsmasq
 docker
@@ -81,6 +82,10 @@ paper-icon-theme
 patch
 pavucontrol
 pcmanfm
+perl-lwp-protocol-https
+perl-www-mechanize
+perl-xml-catalog
+perl-xml-treebuilder
 pipewire-pulse
 pkgconf
 polkit-gnome
@@ -93,6 +98,7 @@ qpdfview
 qt5-wayland
 rocketchat-client-bin
 rofi
+samba
 seahorse
 slurp
 sshfs
@@ -135,6 +141,5 @@ yay-bin
 youtube-dl
 zathura
 zathura-pdf-mupdf
-zoom
 zotero
 zsh
