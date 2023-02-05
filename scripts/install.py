@@ -1,8 +1,6 @@
 #!/usr/bin/python3
 import subprocess
 import os.path
-import os
-
 
 USER_HOME = f"/home/{os.getlogin()}"
 CONFIGS_PATH = "configs"
@@ -12,7 +10,8 @@ config_paths = {
     f"{CONFIGS_PATH}/gtk3.0.config": f"{USER_HOME}/.config/gtk-3.0/settings.ini",
     f"{CONFIGS_PATH}/import-gsettings": f"{USER_HOME}/.config/gtk-3.0/import-gsettings",
     f"{CONFIGS_PATH}/sway.config": f"{USER_HOME}/.config/sway/config",
-    f"{CONFIGS_PATH}/termite.config": f"{USER_HOME}/.config/termite/config",
+    f"{CONFIGS_PATH}/alacritty.config": f"{USER_HOME}/.config/alacritty/alacritty.yml",
+    f"{CONFIGS_PATH}/mako.config": f"{USER_HOME}/.config/mako/config",
     f"{CONFIGS_PATH}/waybar.config": f"{USER_HOME}/.config/waybar/config",
     f"{CONFIGS_PATH}/waybar.style": f"{USER_HOME}/.config/waybar/style.css",
     f"{CONFIGS_PATH}/zsh.config": f"{USER_HOME}/.zshrc",
@@ -34,12 +33,19 @@ def link_config_files():
 
         os.makedirs(link_dir, exist_ok=True)
         link_cmd = ["ln", "-sf", filepath, config_paths[file]]
-        # subprocess.run(link_cmd)
+        subprocess.run(link_cmd)
         print(link_cmd)
+
+
+def copy_wallpaper():
+    config_path = f"{CONFIGS_PATH}/wallpaper.png"
+    filepath = f"{USER_HOME}/.config/wallpaper.png"
+    link_cmd = ["cp", config_paths, filepath]
 
 
 def __main__():
     link_config_files()
+    copy_wallpaper()
 
 
 __main__()

@@ -18,17 +18,15 @@ class Screen:
     def __eq__(self, other) -> bool:
         if not isinstance(other, Screen):
             return False
-        return \
-            self.make == other.make and \
+        return self.make == other.make and \
             self.model == other.model and \
             self.serial == other.serial
 
 
 screen_identifiers_home = [
-    # Screen('Dell Inc.', 'Dell U4919DW', 'CQXTY2', 0),
-    Screen('Acer Technologies', 'Acer K222HQL', 'T1LEE0054201', 0),
-    Screen('Goldstar Company Ltd', '24MB56', '', 1920),
-    Screen('Goldstar Company Ltd', '24MB56', '508NTDVBJ122', 3840),
+    Screen('LG Electronics', '24MB56', '407NDAYDC224', 0),
+    Screen('Samsung Electric Company', 'S27E450', 'H4ZJ300157', 1920),
+    Screen('LG Electronics', '24MB56', '508NTDVBJ122', 3840),
 ]
 
 screen_identifiers_work = [
@@ -73,7 +71,7 @@ def undock():
 def restore_wallpaper():
     sway_bg_pid = subprocess.run(['pidof', 'swaybg'], stdout=subprocess.PIPE).stdout.decode('utf-8')
     if sway_bg_pid == '':
-        subprocess.Popen(['swaybg', '-i', '/home/angerstoner/.config/wallpaper.png', '-m', 'fit'])
+        subprocess.Popen(['swaybg', '-i', '~/.config/wallpaper.png', '-m', 'fit'])
 
 
 if is_dock_connected(dock_identifier_work):
