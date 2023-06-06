@@ -2,8 +2,7 @@
 import subprocess
 import json
 
-# TODO: change to dell home dock
-dock_identifier_home = "04d9:0296"  # Keyboard, because thunderbolt dock does not have a USB ID
+dock_identifier_home = "04d9:0296"  # Keyboard, because thunderbolt dock does not have an USB ID
 dock_identifier_work = "413c:b06e"  # Bus 005 Device 006: ID 413c:b06e Dell Computer Corp. Dell dock
 
 
@@ -39,6 +38,9 @@ def is_dock_connected(identifier: str) -> bool:
     usb_devices = subprocess.run(['lsusb'], stdout=subprocess.PIPE).stdout.decode('utf-8')
     return identifier in usb_devices
 
+def has_hostname(hostname: str) -> bool:
+    detected_hostname = subprocess.run(['cat', '/etc/hostname'], stdout=subprocess.PIPE).stdout.decode('utf-8')
+    return hostname in detected_hostname
 
 def get_output_json():
     return json.loads(subprocess.run(['swaymsg', '-t', 'get_outputs'], stdout=subprocess.PIPE).stdout.decode('utf-8'))
@@ -74,9 +76,11 @@ def restore_wallpaper():
         subprocess.Popen(['swaybg', '-i', '~/.config/wallpaper.png', '-m', 'fit'])
 
 
+
 if is_dock_connected(dock_identifier_work):
     dock(get_connected_screens(get_output_json(), screen_identifiers_work))
 elif is_dock_connected(dock_identifier_home):
-    dock(get_connected_screens(get_output_json(), screen_identifiers_home), undock_internal=True)
+    undock_internal = has_hostname("azazel")
+    dock(get_connected_screens(get_output_json(), screen_identifiers_home), undock_internal=undock_internal)
 else:
     undock()
