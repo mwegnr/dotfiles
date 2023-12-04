@@ -47,7 +47,6 @@ networkmanager
 nextcloud-client
 ntfs-3g
 ntp
-oh-my-zsh
 oh-my-zsh-plugin-autosuggestions
 openssh
 p7zip
