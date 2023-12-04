@@ -1,6 +1,6 @@
 #!/usr/bin/python3
-import subprocess
 import json
+import subprocess
 
 dock_identifier_home = "04d9:0296"  # Keyboard, because thunderbolt dock does not have an USB ID
 dock_identifier_work = "413c:b06e"  # Bus 005 Device 006: ID 413c:b06e Dell Computer Corp. Dell dock
@@ -23,9 +23,9 @@ class Screen:
 
 
 screen_identifiers_home = [
-    Screen('LG Electronics', '24MB56', '407NDAYDC224', 0),
-    Screen('Samsung Electric Company', 'S27E450', 'H4ZJ300157', 1920),
-    Screen('LG Electronics', '24MB56', '508NTDVBJ122', 3840),
+    Screen('LG Electronics', '24MB56', '508NTDVBJ122', 0),
+    Screen('Dell Inc.', 'DELL U2717D', 'J0XYN8C4C8QS', 1920),
+    Screen('LG Electronics', '24MB56', '407NDAYDC224', 3840),
 ]
 
 screen_identifiers_work = [
@@ -38,9 +38,11 @@ def is_dock_connected(identifier: str) -> bool:
     usb_devices = subprocess.run(['lsusb'], stdout=subprocess.PIPE).stdout.decode('utf-8')
     return identifier in usb_devices
 
+
 def has_hostname(hostname: str) -> bool:
     detected_hostname = subprocess.run(['cat', '/etc/hostname'], stdout=subprocess.PIPE).stdout.decode('utf-8')
     return hostname in detected_hostname
+
 
 def get_output_json():
     return json.loads(subprocess.run(['swaymsg', '-t', 'get_outputs'], stdout=subprocess.PIPE).stdout.decode('utf-8'))
@@ -58,6 +60,8 @@ def get_connected_screens(output_json, screen_identifiers: list[Screen]) -> list
 
 def dock(screens: list[Screen], undock_internal=False):
     for screen in screens:
+        subprocess.run(['sway', 'output', screen.output_port,
+                        'mode 1920x1080@60Hz'])  # set all screens to FHD, 1440p won't work with the HDMI switch
         subprocess.run(['sway', 'output', screen.output_port, 'pos', f'{screen.y_pos}', '0'])  #
         subprocess.run(['sway', 'output', screen.output_port, 'enable'])
     if undock_internal:
@@ -68,6 +72,8 @@ def undock():
     for i in range(12):
         subprocess.run(['sway', 'output', 'DP-{}'.format(i), 'disable'])
     subprocess.run(['sway', 'output', 'eDP-1', 'enable'])
+    if has_hostname("eve"):
+        subprocess.run(['sway', 'output', 'eDP-1', 'scale', '1.3'])  # set scale to 1.3 on hiDPI fw display
 
 
 def restore_wallpaper():
@@ -76,11 +82,9 @@ def restore_wallpaper():
         subprocess.Popen(['swaybg', '-i', '~/.config/wallpaper.png', '-m', 'fit'])
 
 
-
 if is_dock_connected(dock_identifier_work):
     dock(get_connected_screens(get_output_json(), screen_identifiers_work))
 elif is_dock_connected(dock_identifier_home):
-    undock_internal = has_hostname("azazel")
-    dock(get_connected_screens(get_output_json(), screen_identifiers_home), undock_internal=undock_internal)
+    dock(get_connected_screens(get_output_json(), screen_identifiers_home), undock_internal=True)
 else:
     undock()
