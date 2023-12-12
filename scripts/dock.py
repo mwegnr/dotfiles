@@ -2,7 +2,7 @@
 import json
 import subprocess
 
-dock_identifier_home = "04d9:0296"  # Keyboard, because thunderbolt dock does not have an USB ID
+dock_identifier_home = "17ef:a396"  # Bus 003 Device 019: ID 17ef:a396 Lenovo ThinkPad USB-C Dock Gen2 USB Audio
 dock_identifier_work = "413c:b06e"  # Bus 005 Device 006: ID 413c:b06e Dell Computer Corp. Dell dock
 
 
@@ -25,7 +25,7 @@ class Screen:
 screen_identifiers_home = [
     Screen('LG Electronics', '24MB56', '508NTDVBJ122', 0),
     Screen('Dell Inc.', 'DELL U2717D', 'J0XYN8C4C8QS', 1920),
-    Screen('LG Electronics', '24MB56', '407NDAYDC224', 3840),
+    Screen('LG Electronics', '24MB56', 'Unknown', 3840),
 ]
 
 screen_identifiers_work = [
@@ -61,7 +61,7 @@ def get_connected_screens(output_json, screen_identifiers: list[Screen]) -> list
 def dock(screens: list[Screen], undock_internal=False):
     for screen in screens:
         subprocess.run(['sway', 'output', screen.output_port,
-                        'mode 1920x1080@60Hz'])  # set all screens to FHD, 1440p wont work with the HDMI switch
+                        'mode 1920x1080@60Hz'])  # set all screens to FHD, 1440p wont work with the dock
         subprocess.run(['sway', 'output', screen.output_port, 'pos', f'{screen.y_pos}', '0'])  #
         subprocess.run(['sway', 'output', screen.output_port, 'enable'])
     if undock_internal:
