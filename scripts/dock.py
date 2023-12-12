@@ -61,7 +61,7 @@ def get_connected_screens(output_json, screen_identifiers: list[Screen]) -> list
 def dock(screens: list[Screen], undock_internal=False):
     for screen in screens:
         subprocess.run(['sway', 'output', screen.output_port,
-                        'mode 1920x1080@60Hz'])  # set all screens to FHD, 1440p wont work with the dock
+                        'mode 1920x1080@60Hz'])  # set all screens to FHD, 1440p won't work with the HDMI switch
         subprocess.run(['sway', 'output', screen.output_port, 'pos', f'{screen.y_pos}', '0'])  #
         subprocess.run(['sway', 'output', screen.output_port, 'enable'])
     if undock_internal:
@@ -72,6 +72,8 @@ def undock():
     for i in range(12):
         subprocess.run(['sway', 'output', 'DP-{}'.format(i), 'disable'])
     subprocess.run(['sway', 'output', 'eDP-1', 'enable'])
+    if has_hostname("eve"):
+        subprocess.run(['sway', 'output', 'eDP-1', 'scale', '1.3'])  # set scale to 1.3 on hiDPI fw display
 
 
 def restore_wallpaper():

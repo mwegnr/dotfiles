@@ -32,7 +32,7 @@ linux
 linux-firmware
 lshw
 mako
-metwork-manager-applet
+network-manager-applet
 mopidy
 mopidy-local
 mopidy-mpd
@@ -47,8 +47,6 @@ networkmanager
 nextcloud-client
 ntfs-3g
 ntp
-oh-my-zsh
-oh-my-zsh-plugin-autosuggestions
 openssh
 p7zip
 paper-icon-theme
@@ -86,6 +84,7 @@ wl-clipboard
 xdg-desktop-portal-wlr
 xorg-xwayland
 yay-bin
+yt-dlp
 zathura
 zathura-pdf-mupdf
 zsh
