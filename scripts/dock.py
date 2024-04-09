@@ -25,7 +25,7 @@ class Screen:
 screen_identifiers_home = [
     Screen('LG Electronics', '24MB56', '508NTDVBJ122', 0),
     Screen('Dell Inc.', 'DELL U2717D', 'J0XYN8C4C8QS', 1920),
-    Screen('LG Electronics', '24MB56', 'Unknown', 3840),
+    Screen('LG Electronics', '24MB56', '', 3840),
 ]
 
 screen_identifiers_work = [
