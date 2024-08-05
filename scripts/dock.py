@@ -25,12 +25,13 @@ class Screen:
 screen_identifiers_home = [
     Screen('LG Electronics', '24MB56', '508NTDVBJ122', 0),
     Screen('Dell Inc.', 'DELL U2717D', 'J0XYN8C4C8QS', 1920),
-    Screen('LG Electronics', '24MB56', '', 3840),
+    Screen('LG Electronics', '24MB56', '0x0006EE50', 3840),
 ]
 
 screen_identifiers_work = [
     Screen('Dell Inc.', 'Dell U4919DW', 'CQXTY2', 0),
-    Screen('Unknown', '0x06B3', '0x00000000', 5120)
+    # TODO: find way to work around serial (alternating workplaces at work)
+    Screen('LG Display', '0x06B3', 'Unknown', 5120)
 ]
 
 
@@ -60,6 +61,7 @@ def get_connected_screens(output_json, screen_identifiers: list[Screen]) -> list
 
 def dock(screens: list[Screen], undock_internal=False):
     for screen in screens:
+        # TODO: add resolution to screen identifiers, at work, we don't want 1080p
         subprocess.run(['sway', 'output', screen.output_port,
                         'mode 1920x1080@60Hz'])  # set all screens to FHD, 1440p won't work with the HDMI switch
         subprocess.run(['sway', 'output', screen.output_port, 'pos', f'{screen.y_pos}', '0'])  #
