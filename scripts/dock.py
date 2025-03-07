@@ -7,12 +7,14 @@ dock_identifier_work = "413c:b06e"  # Bus 005 Device 006: ID 413c:b06e Dell Comp
 
 
 class Screen:
-    def __init__(self, make: str, model: str, serial: str, y_pos: int = 0, output_port=""):
+    def __init__(self, make: str, model: str, serial: str, y_pos: int = 0, display_mode='mode 1920x1080@60Hz',
+                 output_port=""):
         self.make = make
         self.model = model
         self.serial = serial
         self.y_pos = y_pos
         self.output_port = output_port
+        self.display_mode = display_mode
 
     def __eq__(self, other) -> bool:
         if not isinstance(other, Screen):
@@ -24,13 +26,14 @@ class Screen:
 
 screen_identifiers_home = [
     Screen('LG Electronics', '24MB56', '508NTDVBJ122', 0),
-    Screen('Dell Inc.', 'DELL U2717D', 'J0XYN8C4C8QS', 1920),
-    Screen('LG Electronics', '24MB56', '', 3840),
+    Screen('Dell Inc.', 'DELL U2717D', 'J0XYN8C4C8QS', 1920, 'mode 1920x1080@60Hz'),
+    Screen('LG Electronics', '24MB56', '0x0006EE50', 3840),
 ]
 
 screen_identifiers_work = [
-    Screen('Dell Inc.', 'Dell U4919DW', 'CQXTY2', 0),
-    Screen('Unknown', '0x06B3', '0x00000000', 5120)
+    Screen('Dell Inc.', 'Dell U4919DW', 'CQXTY2', 0, 'mode 1920x1080@60Hz'),  ## TODO: find mode
+    # TODO: find way to work around serial (alternating workplaces at work)
+    Screen('LG Display', '0x06B3', 'Unknown', 5120)
 ]
 
 
@@ -60,8 +63,9 @@ def get_connected_screens(output_json, screen_identifiers: list[Screen]) -> list
 
 def dock(screens: list[Screen], undock_internal=False):
     for screen in screens:
-        subprocess.run(['sway', 'output', screen.output_port,
-                        'mode 1920x1080@60Hz'])  # set all screens to FHD, 1440p won't work with the HDMI switch
+        # TODO: add resolution to screen identifiers, at work, we don't want 1080p
+        # set all screens to desired display mode, pos and enable
+        subprocess.run(['sway', 'output', screen.output_port, screen.display_mode])
         subprocess.run(['sway', 'output', screen.output_port, 'pos', f'{screen.y_pos}', '0'])  #
         subprocess.run(['sway', 'output', screen.output_port, 'enable'])
     if undock_internal:
@@ -73,6 +77,7 @@ def undock():
         subprocess.run(['sway', 'output', 'DP-{}'.format(i), 'disable'])
     subprocess.run(['sway', 'output', 'eDP-1', 'enable'])
     if has_hostname("eve"):
+        subprocess.run(['sway', 'output', 'eDP-1', 'mode', '2256x1504@59.999Hz'])  # set res to 2256x1504 (max)
         subprocess.run(['sway', 'output', 'eDP-1', 'scale', '1.3'])  # set scale to 1.3 on hiDPI fw display
 
 
